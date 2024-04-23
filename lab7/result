@@ -1,0 +1,93 @@
+
+
+WRONG TESTS
+
+
+----------------------------
+executing 
+You should provide at least path to the file!
+----------------------------
+executing -a numbers 5
+Column number should be bigger than 0 and less than 4. Provided: 5
+----------------------------
+executing -a numbers 0
+Column number should be bigger than 0 and less than 4. Provided: 0
+----------------------------
+executing -a numbers -1
+Column should be the number! Provided: -1
+Column number should be bigger than 0 and less than 4. Provided: -1
+----------------------------
+executing -a not_read_perm
+You don't have read permission to the file not_read_perm!
+----------------------------
+executing -a directory
+directory is not the file!
+----------------------------
+executing -a not_numbers 2
+Column 2 in file not_numbers contains not only integers!
+----------------------------
+executing -a not_numbers 1 2
+Column 2 in file not_numbers contains not only integers!
+----------------------------
+executing -a numbers f
+Column should be the number! Provided: f
+Column number should be bigger than 0 and less than 4. Provided: f
+----------------------------
+executing -a not_exists_file
+not_exists_file is not the file!
+----------------------------
+executing numbers 5
+Column number should be bigger than 0 and less than 4. Provided: 5
+----------------------------
+executing numbers 0
+Column number should be bigger than 0 and less than 4. Provided: 0
+----------------------------
+executing numbers -1
+Column should be the number! Provided: -1
+Column number should be bigger than 0 and less than 4. Provided: -1
+----------------------------
+executing not_read_perm
+You don't have read permission to the file not_read_perm!
+----------------------------
+executing directory
+directory is not the file!
+----------------------------
+executing not_numbers 2
+Column 2 in file not_numbers contains not only integers!
+----------------------------
+executing not_numbers 1 2
+Column 2 in file not_numbers contains not only integers!
+----------------------------
+executing numbers f
+Column should be the number! Provided: f
+Column number should be bigger than 0 and less than 4. Provided: f
+----------------------------
+executing not_exists_file
+not_exists_file is not the file!
+
+
+CORRECT TESTS
+
+
+----------------------------
+executing numbers 1 2
+15
+10
+----------------------------
+executing -a numbers
+15
+10
+11
+14
+Sum of all columns: 50
+----------------------------
+executing -a numbers 1 2
+15
+10
+Sum of all columns: 25
+----------------------------
+executing numbers
+15
+10
+11
+14

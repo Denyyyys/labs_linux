@@ -37,7 +37,7 @@ if [ "$print_all" = true ]; then
         exit 1
     fi    
     if [[ ! -f $2 ]]; then
-        echo "$2 is not the file!"
+        echo "$2 is not the file or does not exist!"
         exit 1
     fi
 
@@ -48,8 +48,9 @@ if [ "$print_all" = true ]; then
     num_columns=$(awk '{print NF; exit}' "$2")
     for ((i = 3; i <= $#; i++)); do
         if [[ "${!i}" -gt $num_columns || "${!i}" -lt 1 ]]; then
-            if ! [[ ${!i} =~ ^[0-9]+$ ]]; then
+            if ! [[ ${!i} =~ ^[-]?[0-9]+$ ]]; then
                 echo "Column should be the number! Provided: ${!i}"
+                exit 1
             fi
             echo "Column number should be bigger than 0 and less than $num_columns. Provided: ${!i}"
             exit 1
@@ -92,7 +93,7 @@ if [ "$print_all" = true ]; then
 else
     # without option -a
     if [[ ! -f $1 ]]; then
-        echo "$1 is not the file!"
+        echo "$1 is not the file or does not exist!"
         exit 1
     fi
     if [[ ! -r $1 ]]; then
@@ -103,8 +104,9 @@ else
     num_columns=$(awk '{print NF; exit}' "$1")
     for ((i = 2; i <= $#; i++)); do
         if [[ "${!i}" -gt $num_columns || "${!i}" -lt 1 ]]; then
-            if ! [[ ${!i} =~ ^[0-9]+$ ]]; then
+            if ! [[ ${!i} =~ ^[-]?[0-9]+$ ]]; then
                 echo "Column should be the number! Provided: ${!i}"
+                exit 1
             fi
             echo "Column number should be bigger than 0 and less than $num_columns. Provided: ${!i}"
             exit 1

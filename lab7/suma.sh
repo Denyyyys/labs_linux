@@ -65,9 +65,15 @@ if [ "$print_all" = true ]; then
                 echo "Column $i in file $2 contains not only integers!"
                 exit 1
             fi
-
-            result_array+=($(awk -v col="$i" '{sum += $col} END {print sum}' "$2"))
+             # result_array+=($(awk -v col="$i" '{sum += $col} END {print sum}' "$2"))
         done
+        result_array=$(awk '{
+            s=0  
+            for(i = 1; i <= NF; ++i) { 
+                s += $i
+            };
+            print s;
+        }' $2)
     else
         for number in "${@:3}"; do
             check_if_column_has_only_numbers "$2" "$number"
@@ -76,18 +82,35 @@ if [ "$print_all" = true ]; then
                 echo "Column $number in file $2 contains not only integers!"
                 exit 1
             fi
-            result_array+=($(awk -v col="$number" '{sum += $col} END {print sum}' "$2"))
+            # result_array+=($(awk -v col="$number" '{sum += $col} END {print sum}' "$2"))
+
         done
+        columns="${@:3}"
+        result_array=$(awk -v col="$columns" 'BEGIN {
+            split(col, colarr, " ");
+        } 
+        {
+            s = 0;
+            for(i = 1; i <= length(colarr); ++i){
+                s += $colarr[i]
+            };
+            print s;
+        }
+        ' "$2")
     fi
 
     sum=0
-    for num in "${result_array[@]}"; do
+    for num in ${result_array[@]}; do
         ((sum += num))
+        echo $num
     done
-
-    for element in "${result_array[@]}"; do
-        echo $element
-    done
+    # echo $result_array
+    # for element in ${result_array[@]}; do
+    #     echo $element
+    # done
+    # for element in "${result_array[@]}"; do
+    #     echo $element
+    # done
 
     echo "Sum of all columns: $sum"
 else
@@ -122,8 +145,15 @@ else
                 exit 1
             fi
 
-            result_array+=($(awk -v col="$i" '{sum += $col} END {print sum}' "$1"))
+            # result_array+=($(awk -v col="$i" '{sum += $col} END {print sum}' "$1"))
         done
+        result_array=$(awk '{
+            s=0  
+            for(i = 1; i <= NF; ++i) { 
+                s += $i
+            };
+            print s;
+        }' $1)
     else
         for number in "${@:2}"; do
             # echo "$number"
@@ -133,10 +163,20 @@ else
                 echo "Column $number in file $1 contains not only integers!"
                 exit 1
             fi
-            result_array+=($(awk -v col="$number" '{sum += $col} END {print sum}' "$1"))
-            check_if_column_has_only_numbers "$1" "$number"
-
+            # result_array+=($(awk -v col="$number" '{sum += $col} END {print sum}' "$1"))
         done
+        columns="${@:2}"
+        result_array=$(awk -v col="$columns" 'BEGIN {
+            split(col, colarr, " ");
+        } 
+        {
+            s = 0;
+            for(i = 1; i <= length(colarr); ++i){
+                s += $colarr[i]
+            };
+            print s;
+        }
+        ' "$1")
     fi
     
     for element in "${result_array[@]}"; do

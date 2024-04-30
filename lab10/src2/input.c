@@ -1,4 +1,6 @@
 #include "rlin.h"
+double a = 0;
+double b = 0;
 
 void WczytajDane(void)
 {

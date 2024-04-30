@@ -1,0 +1,5 @@
+bin/
+*.a
+*.o
+src1/prog1
+src2/prog2

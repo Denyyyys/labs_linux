@@ -1,6 +1,9 @@
+#ifndef RLIN_H
+#define RLIN_H
 #include <stdio.h>
 #include <stdlib.h>
 
 void WczytajDane(void);
 
-double a, b;
+extern double a, b;
+#endif

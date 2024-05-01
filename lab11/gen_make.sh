@@ -55,21 +55,3 @@ for file in $files_n_extens; do
 done
 
 echo -e "clean:\n\tfind . -type f -name \"*.o\" -exec rm -f {} +" >> Makefile
-
-
-
-# for file in $(find -type f -name "*.c"); do
-#     file=${file#./}
-
-#     echo $file
-# done
-
-
-# a=$(echo "rlin.c src/s.c" |wc -l)
-# echo $a
-# for file in *.c
-# do
-#     echo $file
-#     if 
-# done
-

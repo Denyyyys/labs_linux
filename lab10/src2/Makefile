@@ -10,7 +10,7 @@
 all: prog2
 
 prog2: input.o rlin.o
-	$(CC) $(CFLAGS) -o $@ $^ 
+	$(CC) -o $@ $^ 
 
 input.o: $(INC)/rlin.h
 

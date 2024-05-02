@@ -9,7 +9,7 @@ LIBS = -lusux -lm
 all: prog1
 
 prog1: rkw.o ../lib/libusux.a
-	$(CC) $(CFLAGS) -o $@ $^ -L../lib $(LIBS)
+	$(CC) -o $@ $^ -L../lib $(LIBS)
 
 rkw.o: $(INC)/rkw.h
 

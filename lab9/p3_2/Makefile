@@ -9,7 +9,7 @@ CFLAGS  = -g -I$(INC) -DZESPOLONE
 
 prog: rkw.o libusux.a
 #	$(CC) -o prog rkw.o libusux.a $(CFLAGS) $(LDFLAGS)
-	$(CC) -o prog $^ $(CFLAGS) $(LDFLAGS)
+	$(CC) -o prog $^ $(LDFLAGS)
 
 libusux.a: delta.o pierw.o
 #	ar -rv libusux.a delta.o pierw.o

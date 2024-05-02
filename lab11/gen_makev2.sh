@@ -40,7 +40,7 @@ for file in $files_n_extens; do
     echo -n "$file.o " >> Makefile
 done
 echo "" >> Makefile
-echo -ne '\t$(CC) $(CFLAGS) -o' "$main_n_extens" '$(LDFLAGS) ' >> Makefile
+echo -ne '\t$(CC) -o' "$main_n_extens" '$(LDFLAGS) ' >> Makefile
 
 for file in $files_n_extens;do
     echo -n "$file.o " >> Makefile

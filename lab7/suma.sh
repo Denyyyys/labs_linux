@@ -58,6 +58,7 @@ if [ "$print_all" = true ]; then
     done
 
     if [ $# -eq 2 ]; then
+        # -a numbers
         for ((i=1; i<=$num_columns; i++)); do        
             check_if_column_has_only_numbers "$2" "$i"
             result=$?   
@@ -75,6 +76,7 @@ if [ "$print_all" = true ]; then
             print s;
         }' $2)
     else
+        # -a numbers 1 2
         for number in "${@:3}"; do
             check_if_column_has_only_numbers "$2" "$number"
             result=$?   
@@ -136,6 +138,7 @@ else
         fi
     done
     if [ $# -eq 1 ]; then
+        # numbers
         for ((i=1; i<=$num_columns; i++)); do        
             check_if_column_has_only_numbers "$1" "$i"
             result=$?   
@@ -155,6 +158,7 @@ else
             print s;
         }' $1)
     else
+        #numbers 1 2
         for number in "${@:2}"; do
             # echo "$number"
             check_if_column_has_only_numbers "$1" "$number"

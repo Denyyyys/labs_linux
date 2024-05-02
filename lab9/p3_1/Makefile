@@ -8,8 +8,8 @@ INC = ./include
 CFLAGS  = -O3 -g -I$(INC) -DZESPOLONE
 
 prog: pierw.o rkw.o delta.o
-#	 $(CC) -o prog pierw.o rkw.o delta.o $(CFLAGS) $(LDFLAGS)
-	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
+#	 $(CC) -o prog pierw.o rkw.o delta.o $(LDFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 # pierw.o: pierw.c $(INC)/fun.h
 # 	$(CC) $(CFLAGS) -c pierw.c 
